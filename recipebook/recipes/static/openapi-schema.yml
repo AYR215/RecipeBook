@@ -1,0 +1,183 @@
+openapi: 3.0.2
+info:
+  title: 'recipebook'
+  version: ''
+paths:
+  /recipes/:
+    get:
+      operationId: listRecepies
+      description: ''
+      parameters:
+      - name: category
+        required: false
+        in: query
+        description: category
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipes'
+          description: ''
+      tags:
+      - recipes
+    post:
+      operationId: createRecepies
+      description: ''
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recipes'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Recipes'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Recipes'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipes'
+          description: ''
+      tags:
+      - recipes
+  /recipes/{id}/:
+    get:
+      operationId: retrieveRecepies
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this recepies.
+        schema:
+          type: string
+      - name: category
+        required: false
+        in: query
+        description: category
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipes'
+          description: ''
+      tags:
+      - recipes
+    put:
+      operationId: updateRecepies
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this recepies.
+        schema:
+          type: string
+      - name: category
+        required: false
+        in: query
+        description: category
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recipes'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Recipes'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Recipes'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipes'
+          description: ''
+      tags:
+      - recipes
+    patch:
+      operationId: partialUpdateRecepies
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this recepies.
+        schema:
+          type: string
+      - name: category
+        required: false
+        in: query
+        description: category
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recipes'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Recipes'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Recipes'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipes'
+          description: ''
+      tags:
+      - recipes
+    delete:
+      operationId: destroyRecepies
+      description: ''
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this recepies.
+        schema:
+          type: string
+      - name: category
+        required: false
+        in: query
+        description: category
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - recipes
+components:
+  schemas:
+    Recipes:
+      type: object
+      properties:
+        title:
+          type: string
+          maxLength: 100
+        text:
+          type: string
+        category:
+          type: string
+          maxLength: 255
